@@ -27,8 +27,10 @@ const Header = () => {
             <div className="profile text-xl lg:text-2xl">
               <BiUser/>
             </div>
-            <div className="cart text-xl lg:text-2xl flex justify-center items-center">
+            <div className="cart text-xl lg:text-2xl flex justify-center items-center cursor-pointer">
+              <Link to="/cart">
               <CgShoppingCart /><span className="text-[10px] font-semibold bg-orange-500 text-white w-3 h-3.5 text-center rounded-2xl absolute -top-1 -right-1.5">2</span>
+              </Link>
             </div>
           </div>
         </nav>

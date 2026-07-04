@@ -8,7 +8,7 @@ const ProductDetails = () => {
       {/*navigation sec*/}
       <div className="max-w-300 mx-auto my-10 px-[3vw] font-medium">
         <div className="nav flex flex-row items-center text-sm text-gray-700 hover:text-gray-600 gap-2">
-          <Link to="#" className=" hover:text-gray-600">
+          <Link to="/" className=" hover:text-gray-600">
             Home
           </Link>
           <MdNavigateNext className="  hover:text-gray-600" />
@@ -53,7 +53,7 @@ const ProductDetails = () => {
               accusamus et vel quaerat.
             </div>
           </div>
-          <div className="more my-2">
+          <div className="more mt-2 mb-4">
             <div className="text-lg font-bold text-gray-800">More Details</div>
             <div className="text-lg text-gray-700">
               <ul>
