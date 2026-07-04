@@ -13,7 +13,7 @@ const ProductItem = () => {
           <div className="category mx-3 text-sm text-gray-400 mb-1">Frogrance</div>
           <div className="capitalize flex flex-row justify-between mx-3 text-lg font-medium">
             <div className="title text-gray-800">Gucci perfume</div>
-            <div className="rating text-[#ffc400]">4.3</div>
+            <div className="rating text-[#FF9529]">4.3</div>
           </div>
           <div className="desc text-sm mx-3 line-clamp-2 text-gray-700 mb-1">
             Iusto, voluptatem. Quaerat voluptatibus nam error quo ducimus ex,
