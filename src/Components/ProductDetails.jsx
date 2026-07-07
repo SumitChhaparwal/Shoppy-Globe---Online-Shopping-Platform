@@ -55,7 +55,7 @@ const ProductDetails = () => {
         ) : (
           <>
             <div className="sec-1 w-[40%] max-sm:w-full">
-              <img src={data.images[0]} />
+              <img src={data.images[0]} alt="product_img" loading="lazy"/>
             </div>
             <div className="sec-2 w-[55%] flex flex-col justify-center gap-2 max-sm:w-[93vw] max-sm:mx-auto max-sm:mt-5 max-sm:mb-10">
               <div className="company-name text-md font-semibold text-zinc-400 mt-1 ">

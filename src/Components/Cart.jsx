@@ -1,9 +1,17 @@
 import { MdNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  let cartItemAvail = true;
+  const cartArr = useSelector((store) => store.cart.cartItems);
+  console.log("cart: ", cartArr);
+  let cartItemAvail = cartArr.length;
+
+  let subTotal = cartArr.reduce((acc, item) => {
+    return acc + Number(item.price) * Number(item.quantity);
+  }, 0);
+  console.log(subTotal);
 
   return (
     <div className=" w-full">
@@ -24,7 +32,7 @@ const Cart = () => {
           </div>
           <div className="container-sec mt-3">
             {cartItemAvail ? (
-              <CartItem />
+              cartArr.map((item) => <CartItem itemObj={item} key={item.id} />)
             ) : (
               <div className="sec flex flex-row justify-between items-center border-b border-gray-300 py-9 mx-6 max-sm:mx-1 max-sm:py-4 bg-gray-100 px-4 mt-6">
                 Cart is Empty..
@@ -96,7 +104,9 @@ const Cart = () => {
           <div className="subCalc w-80 text-md text-gray-600 flex flex-col gap-3">
             <div className="row flex flex-row justify-between">
               <div className="field font-semibold text-zinc-800">Subtotal</div>
-              <div className="amount font-semibold text-zinc-800">$260</div>
+              <div className="amount font-semibold text-zinc-800">
+                ${subTotal.toFixed(2)}
+              </div>
             </div>
             <div className="row flex flex-row justify-between">
               <div className="field">Estimate Tax</div>
@@ -108,7 +118,9 @@ const Cart = () => {
             </div>
             <div className="row flex flex-row justify-between border-t border-gray-300 pt-1.5">
               <div className="field font-semibold text-zinc-800">Total</div>
-              <div className="amount font-semibold text-zinc-800">$278</div>
+              <div className="amount font-semibold text-zinc-800">
+                ${subTotal ? Number(subTotal + 18).toFixed(2) : subTotal}
+              </div>
             </div>
           </div>
           <div className="checkout w-80 text-md text-gray-600">

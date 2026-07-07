@@ -4,3 +4,12 @@
   font-family: "DM Sans", sans-serif;
   /* font-family: "Poppins", sans-serif; */
 }
+
+button::selection {
+  background: transparent;
+}
+
+div::selection{
+  background: transparent;
+}
+

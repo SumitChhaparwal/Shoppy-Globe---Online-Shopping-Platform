@@ -5,6 +5,8 @@ const cartSlice = createSlice({
   initialState: {
     cartItems: [],
     countItems: 0,
+    searchTerm: "",
+    searchArr: [],
   },
   reducers: {
     addToCart: (state, action) => {
@@ -62,6 +64,17 @@ const cartSlice = createSlice({
       );
       state.countItems--;
     },
+    updateTerm: (state, action) => {
+      let data = action.payload;
+      if(!data){
+        return;
+      }
+      if (typeof data === "string"){
+        state.searchTerm = data;
+      } else{
+        state.searchArr.unshift(...data);
+      }
+    },
   },
 });
 
@@ -73,4 +86,5 @@ export const {
   QuantInc,
   QuantDec,
   deleteCartItem,
+  updateTerm,
 } = cartSlice.actions;

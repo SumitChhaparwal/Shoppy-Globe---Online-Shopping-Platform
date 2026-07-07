@@ -14,7 +14,7 @@ const CartItem = ({ itemObj }) => {
     <>
       <div className="sec flex flex-row justify-between items-center border-b border-gray-300 py-9 mx-6 max-sm:mx-1 max-sm:py-4">
         <div className="image w-25 h-25 bg-zinc-50 border border-gray-100 max-sm:w-18 max-sm:h-18">
-          <img src={itemObj.images[0]} className="h-full" />
+          <img src={itemObj.images[0]} alt="cart_item_image" loading="lazy" className="h-full" />
         </div>
         <div className="details flex flex-col gap-0.5 text-md">
           <div className="title font-semibold text-zinc-800 line-clamp-1 max-sm:w-44">
@@ -28,13 +28,13 @@ const CartItem = ({ itemObj }) => {
           </div>
         </div>
         <div className="addToBtn flex text-md max-sm:flex-col-reverse">
-          <div className="px-3 py-1 border border-gray-200 bg-gray-50 hover:bg-white cursor-pointe max-sm:border-0 max-sm:bg-white" onClick={() => dispatch(QuantDec(itemObj))}>
+          <div className="w-8 h-8 text-center py-1 border border-gray-200 bg-gray-50 hover:bg-white cursor-pointe max-sm:border-0 max-sm:bg-white" onClick={() => dispatch(QuantDec(itemObj))}>
             -
           </div>
-          <div className="px-2.5 py-0.5 border  border-gray-200 max-sm:border">
+          <div className="w-8 h-8 text-center py-1 border  border-gray-200 max-sm:border">
             {itemObj.quantity}
           </div>
-          <div className="px-3 py-1 border border-gray-200 bg-gray-50 hover:bg-white cursor-pointer max-sm:border-0 max-sm:bg-white" onClick={() =>  dispatch(QuantInc(itemObj))}>
+          <div className="w-8 h-8 text-center py-1 border border-gray-200 bg-gray-50 hover:bg-white cursor-pointer max-sm:border-0 max-sm:bg-white" onClick={() =>  dispatch(QuantInc(itemObj))}>
             +
           </div>
         </div>

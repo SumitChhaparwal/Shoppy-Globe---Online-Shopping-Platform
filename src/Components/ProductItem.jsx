@@ -13,7 +13,7 @@ const ProductItem = ({ itemObj }) => {
       <div className="productItem border border-[#ccc] w-68 h-115 flex flex-col items-center rounded-2xl max-sm:w-85">
         <Link to={`/productDetails/${itemObj.id}`}>
         <div className=" mb-3 px-15 py-6 bg-gray-100 rounded-tl-2xl rounded-tr-2xl max-sm:px-20 max-sm:mt-0.6">
-          <img src={itemObj.images[0]} alt="product_image" className="h-46" />
+          <img src={itemObj.images[0]} alt="product_image" className="h-46" loading="lazy"/>
         </div>
         <div className="w-full">
           <div className="category mx-3 text-sm text-gray-400 mb-1 capitalize">
