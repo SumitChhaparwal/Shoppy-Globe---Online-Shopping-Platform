@@ -4,9 +4,13 @@ import { IoStar } from "react-icons/io5";
 import { useFetch } from "../Utils/useFetch";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { handleIncre, handleDecre } from "../Utils/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetails = () => {
-  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
+
+  let cartCount = useSelector((store) => store.cart.countItems);
 
   const { id } = useParams();
   console.log(id);
@@ -14,20 +18,6 @@ const ProductDetails = () => {
   const { data, error, loading } = useFetch(
     `https://dummyjson.com/products/${id}`,
   );
-
-  function handleIncre() {
-    if (count < data.minimumOrderQuantity) {
-      setCount(count + 1);
-    }
-  }
-
-  function handleDecre() {
-    if (count <= 1) {
-      return;
-    }
-    setCount(count - 1);
-  }
-
   console.log(data);
 
   return (
@@ -112,16 +102,16 @@ const ProductDetails = () => {
                 <div className="pmbtn flex border-2 border-gray-200 w-41 rounded-4xl bg-gray-50">
                   <div
                     className="minus px-5 py-2  cursor-pointer hover:bg-gray-50 text-xl font-bold text-gray-500  rounded-tl-4xl rounded-bl-4xl"
-                    onClick={handleDecre}
+                    onClick={() => dispatch(handleIncre(data.minimumOrderQuantity))}
                   >
                     -
                   </div>
                   <div className="num px-5 py-2  text-lg max-sm:w-15 w-14 font-semibold">
-                    {count}
+                    {cartCount}
                   </div>
                   <div
                     className="plus px-5 py-2 cursor-pointer hover:bg-gray-50 text-xl font-bold text-gray-500  rounded-tr-4xl rounded-br-4xl"
-                    onClick={handleIncre}
+                    onClick={() => dispatch(handleDecre())}
                   >
                     +
                   </div>
