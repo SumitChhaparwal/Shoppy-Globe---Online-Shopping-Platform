@@ -4,13 +4,17 @@ import { IoStar } from "react-icons/io5";
 import { useFetch } from "../Utils/useFetch";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { handleIncre, handleDecre } from "../Utils/cartSlice";
+import { addToCart } from "../Utils/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetails = () => {
+  const [quantity, setQuantity] = useState(1);
+
   const dispatch = useDispatch();
 
   let cartCount = useSelector((store) => store.cart.countItems);
+
+  let cartArr = useSelector((store) => store.cart.cartItems);
 
   const { id } = useParams();
   console.log(id);
@@ -18,7 +22,19 @@ const ProductDetails = () => {
   const { data, error, loading } = useFetch(
     `https://dummyjson.com/products/${id}`,
   );
-  console.log(data);
+
+  // const { data: dataObj, error:err, loading:load } = useFetch("https://dummyjson.com/products");
+
+  // let cartItemIndx = !load && dataObj.products.findIndex((item) => item.id == data?.id);
+
+  // console.log(cartItemIndx)
+  // if(!load){
+  //   if (!dataObj.products[cartItemIndx].quantity) {
+  //   dataObj.products[cartItemIndx].quantity = 1;
+  // }
+  // }
+
+  console.log("dataquantity", data);
 
   return (
     <div className="w-full">
@@ -102,16 +118,22 @@ const ProductDetails = () => {
                 <div className="pmbtn flex border-2 border-gray-200 w-41 rounded-4xl bg-gray-50">
                   <div
                     className="minus px-5 py-2  cursor-pointer hover:bg-gray-50 text-xl font-bold text-gray-500  rounded-tl-4xl rounded-bl-4xl"
-                    onClick={() => dispatch(handleIncre(data.minimumOrderQuantity))}
+                    onClick={() =>
+                      quantity <= 1 ? quantity : setQuantity(quantity - 1)
+                    }
                   >
                     -
                   </div>
                   <div className="num px-5 py-2  text-lg max-sm:w-15 w-14 font-semibold">
-                    {cartCount}
+                    {quantity}
                   </div>
                   <div
                     className="plus px-5 py-2 cursor-pointer hover:bg-gray-50 text-xl font-bold text-gray-500  rounded-tr-4xl rounded-br-4xl"
-                    onClick={() => dispatch(handleDecre())}
+                    onClick={() =>
+                      quantity < data.minimumOrderQuantity
+                        ? setQuantity(quantity + 1)
+                        : quantity
+                    }
                   >
                     +
                   </div>
@@ -119,6 +141,10 @@ const ProductDetails = () => {
                 <button
                   type="button"
                   className="text-lg bg-gray-800 text-white px-12 py-2 hover:bg-gray-700 transition-all duration-300 ease-in-out cursor-pointer max-sm:px-2 font-medium rounded-4xl w-[80%]"
+                  onClick={() => dispatch(addToCart({
+                    ...data,
+                    quantity: quantity,
+                  }))}
                 >
                   Add to cart
                 </button>
