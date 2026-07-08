@@ -12,7 +12,6 @@ const Header = () => {
 
   //Accessing cartItems state from redux store
   let cartCount = useSelector((store) => store.cart.countItems);
-  console.log(cartCount);
 
   const dispatch = useDispatch();
 

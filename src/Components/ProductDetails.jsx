@@ -23,7 +23,6 @@ const ProductDetails = () => {
 
   //using hook to access route dynamic var value..
   const { id } = useParams();
-  console.log(id);
 
   //using react-router-dom hook, that direct user to the other path
   const navigate = useNavigate();
@@ -31,8 +30,6 @@ const ProductDetails = () => {
   const { data, error, loading } = useFetch(
     `https://dummyjson.com/products/${id}`,
   );
-
-  console.log("dataquantity", data);
 
   function handleCheckout() {
     setPopup(true);

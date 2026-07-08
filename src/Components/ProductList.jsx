@@ -7,7 +7,6 @@ const ProductList = () => {
   const { data, error, loading } = useFetch("https://dummyjson.com/products");
 
   let searchArr = useSelector((store) => store.cart.searchArr);
-  console.log("##", searchArr);
 
   return (
     <div className="max-w-300 mx-auto px-6 mb-6 max-sm:mt-12">
