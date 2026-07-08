@@ -41,7 +41,6 @@ const Cart = () => {
     return () => window.clearInterval(interval);
   }, [popup, count, navigate]);
 
-
   function handleCheckout() {
     setPopup(true);
     setCount(4);

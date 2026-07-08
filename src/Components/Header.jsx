@@ -10,7 +10,7 @@ import { useFetch } from "../Utils/useFetch";
 const Header = () => {
   const { data, error, loading } = useFetch("https://dummyjson.com/products");
 
-  //accessing cartItems state from redux store 
+  //Accessing cartItems state from redux store
   let cartCount = useSelector((store) => store.cart.countItems);
   console.log(cartCount);
 
@@ -34,7 +34,7 @@ const Header = () => {
       const unquieArr = mergeArr.filter((item, index, arr) => {
         return index === arr.findIndex((obj) => obj.id === item.id);
       });
-      
+
       //Dispatching action to update searchCount state..
       newArr && dispatch(updateTerm(unquieArr));
       if (newArr.length === 0) {

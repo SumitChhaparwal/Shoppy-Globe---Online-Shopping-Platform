@@ -72,7 +72,8 @@ const cartSlice = createSlice({
       if (typeof data === "string"){
         state.searchTerm = data;
       } else{
-        state.searchArr.unshift(...data);
+        state.searchArr.length = 0;
+        state.searchArr.push(...data);
       }
     },
     removeCartItems: (state) => {
