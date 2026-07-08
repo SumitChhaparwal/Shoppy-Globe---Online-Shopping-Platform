@@ -17,6 +17,8 @@ const Header = () => {
 
   let searchQuery = useSelector((store) => store.cart.searchTerm);
 
+  let searchArr = useSelector((store) => store.cart.searchArr);
+
   let productArr = !loading && data.products;
 
   function handleSQuery(e) {
@@ -24,7 +26,17 @@ const Header = () => {
       let newArr = productArr.filter((item) =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()),
       );
-      newArr && dispatch(updateTerm(newArr));
+
+      let mergeArr = searchArr.length ? [...newArr, ...searchArr] : [...newArr];
+
+      //Removing duplicate array items by id
+      const unquieArr = mergeArr.filter((item, index, arr) => {
+        return index === arr.findIndex(obj => obj.id === item.id)
+      });
+
+      // console.log("UniqueArr: ", unquieArr)
+
+      newArr && dispatch(updateTerm(unquieArr));
       if (newArr.length === 0) {
         newArr = productArr.filter((item) =>
           item.category.toLowerCase().includes(searchQuery.toLowerCase()),
