@@ -6,7 +6,15 @@ https://github.com/SumitChhaparwal/Shoppy-Globe---Online-Shopping-Platform
 
 ## Features:
 
--**Responsive and Modern UI**: The react single page application (SPA) has highly responsive modern user interface which is compatible for more than 50 devices from small to big size. -**Better UX**: This react web app is come with better user experience to increase screen time. -**Searching**: In this app, the search bar placed in header nav section. In which, the user can search available product by its title and category. The searching perform when they enter. -**Cart**: The user can add multiple products in the cart section by simply clicking AddToCart btn. In cart section, each item can get real time update related to their total price and subtotal also, if they increase or decrease item quantity. -**Proper Error Handling**: from routing to fetching data from server. -**Detailed Summary of Product** -**Custom react Hook and Popups** -**Advance state management through Redux/ReduxToolkit** -**Performance Optimization**: For this using, LazyLoading to avoid unecessary rendering of components, they are not use in the current page, Creating UI through Performance optimized css framework and doing best practices to avoid bad LCP and CLS in the browser.
+-**Responsive and Modern UI**: The react single page application (SPA) has highly responsive modern user interface which is compatible for more than 50 devices from small to big size. 
+-**Better UX**: This react web app is come with better user experience to increase screen time. 
+-**Searching**: In this app, the search bar placed in header nav section. In which, the user can search available product by its title and category. The searching perform when they enter. 
+-**Cart**: The user can add multiple products in the cart section by simply clicking AddToCart btn. In cart section, each item can get real time update related to their total price and subtotal also, if they increase or decrease item quantity. 
+-**Proper Error Handling**: from routing to fetching data from server. 
+-**Detailed Summary of Product** 
+-**Custom react Hook and Popups** 
+-**Advance state management through Redux/ReduxToolkit** 
+-**Performance Optimization**: For this using, LazyLoading to avoid unecessary rendering of components, they are not use in the current page, Creating UI through Performance optimized css framework and doing best practices to avoid bad LCP and CLS in the browser.
 
 ## Technologies Used:
 
