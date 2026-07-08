@@ -66,12 +66,12 @@ const cartSlice = createSlice({
     },
     updateTerm: (state, action) => {
       let data = action.payload;
-      if(!data){
+      if (!data) {
         return;
       }
-      if (typeof data === "string"){
+      if (typeof data === "string") {
         state.searchTerm = data;
-      } else{
+      } else {
         state.searchArr.length = 0;
         state.searchArr.push(...data);
       }
