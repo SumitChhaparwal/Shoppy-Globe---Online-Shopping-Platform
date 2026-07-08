@@ -14,13 +14,12 @@ const Cart = () => {
   const [count, setCount] = useState(4);
 
   const cartArr = useSelector((store) => store.cart.cartItems);
-  console.log("cart: ", cartArr);
   let cartItemAvail = cartArr.length;
 
+  //Calculating subTotal of items
   let subTotal = cartArr.reduce((acc, item) => {
     return acc + Number(item.price) * Number(item.quantity);
   }, 0);
-  console.log(subTotal);
 
   const navigate = useNavigate();
 
@@ -41,7 +40,7 @@ const Cart = () => {
 
     return () => window.clearInterval(interval);
   }, [popup, count, navigate]);
-  
+
 
   function handleCheckout() {
     setPopup(true);
