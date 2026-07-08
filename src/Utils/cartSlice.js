@@ -75,6 +75,10 @@ const cartSlice = createSlice({
         state.searchArr.unshift(...data);
       }
     },
+    removeCartItems: (state) => {
+      state.cartItems.length = 0;
+      state.countItems = 0;
+    },
   },
 });
 
@@ -87,4 +91,5 @@ export const {
   QuantDec,
   deleteCartItem,
   updateTerm,
+  removeCartItems,
 } = cartSlice.actions;
