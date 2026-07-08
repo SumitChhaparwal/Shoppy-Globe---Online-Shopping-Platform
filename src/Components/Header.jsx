@@ -10,6 +10,7 @@ import { useFetch } from "../Utils/useFetch";
 const Header = () => {
   const { data, error, loading } = useFetch("https://dummyjson.com/products");
 
+  //accessing cartItems state from redux store 
   let cartCount = useSelector((store) => store.cart.countItems);
   console.log(cartCount);
 
@@ -31,11 +32,10 @@ const Header = () => {
 
       //Removing duplicate array items by id
       const unquieArr = mergeArr.filter((item, index, arr) => {
-        return index === arr.findIndex(obj => obj.id === item.id)
+        return index === arr.findIndex((obj) => obj.id === item.id);
       });
-
-      // console.log("UniqueArr: ", unquieArr)
-
+      
+      //Dispatching action to update searchCount state..
       newArr && dispatch(updateTerm(unquieArr));
       if (newArr.length === 0) {
         newArr = productArr.filter((item) =>
