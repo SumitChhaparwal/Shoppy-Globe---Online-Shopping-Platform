@@ -8,10 +8,11 @@ import { addToCart } from "../Utils/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
 
-
 const ProductDetails = () => {
+  //creating popup current state for displaying custom popup when button clicked
   const [popup, setPopup] = useState(false);
 
+  //create state for managing quantity
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
@@ -20,9 +21,11 @@ const ProductDetails = () => {
 
   let cartArr = useSelector((store) => store.cart.cartItems);
 
+  //using hook to access route dynamic var value..
   const { id } = useParams();
   console.log(id);
 
+  //using react-router-dom hook, that direct user to the other path
   const navigate = useNavigate();
 
   const { data, error, loading } = useFetch(
@@ -34,7 +37,7 @@ const ProductDetails = () => {
   function handleCheckout() {
     setPopup(true);
     setTimeout(() => {
-      navigate('/');
+      navigate("/");
       setPopup(false);
     }, 2000);
   }
