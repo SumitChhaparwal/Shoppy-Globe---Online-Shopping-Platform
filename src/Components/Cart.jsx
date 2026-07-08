@@ -4,7 +4,7 @@ import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { removeCartItems } from "../Utils/cartSlice";
 
 const Cart = () => {
@@ -24,23 +24,33 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
+  //using useEffect hook to avoid error like updating component while rerendering..
+  useEffect(() => {
+    if (!popup || count <= 0) {
+      return;
+    }
+
+    if (count <= 1) {
+      navigate("/");
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setCount((prev) => setCount(prev - 1));
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [popup, count, navigate]);
+  
+
   function handleCheckout() {
     setPopup(true);
-    let interval = setInterval(() => {
-      setCount((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          navigate("/");
-          return;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    setCount(4);
   }
 
   function handleSubmit(e) {
-     e.preventDefault();
-    if(!cartArr.length){
+    e.preventDefault();
+    if (!cartArr.length) {
       return;
     }
     handleCheckout();
