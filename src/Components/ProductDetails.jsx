@@ -29,17 +29,6 @@ const ProductDetails = () => {
     `https://dummyjson.com/products/${id}`,
   );
 
-  // const { data: dataObj, error:err, loading:load } = useFetch("https://dummyjson.com/products");
-
-  // let cartItemIndx = !load && dataObj.products.findIndex((item) => item.id == data?.id);
-
-  // console.log(cartItemIndx)
-  // if(!load){
-  //   if (!dataObj.products[cartItemIndx].quantity) {
-  //   dataObj.products[cartItemIndx].quantity = 1;
-  // }
-  // }
-
   console.log("dataquantity", data);
 
   function handleCheckout() {
